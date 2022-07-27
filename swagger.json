@@ -1,0 +1,280 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is swagger API docs which helps us to maintain consistent APIs",
+    "version": "0.0.1",
+    "title": "Ordex API"
+  },
+  "host": "localhost:8000",
+  "basePath": "/api",
+  "schemes": ["http"],
+  "servers": ["http://localhost:8000"],
+  "tags": [
+    {
+      "name": "User Api"
+    }
+  ],
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "description": "API key to authorize requests.",
+      "name": "auth-token",
+      "in": "header"
+    }
+  },
+  "paths": {
+    "/user/signup": {
+      "post": {
+        "tags": ["User Api"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "full_name",
+            "in": "formData",
+            "description": "full_name",
+            "format": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "email",
+            "format": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "password",
+            "format": "string"
+          },
+          {
+            "name": "birth_date",
+            "in": "formData",
+            "format": "string",
+            "description": "birthdate Format YYYY-MM-DD"
+          },
+          {
+            "name": "preferences[0]",
+            "in": "formData",
+            "format": "string",
+            "description": "preferences"
+          },
+          {
+            "name": "preferences[1]",
+            "in": "formData",
+            "format": "string",
+            "description": "preferences"
+          },
+          {
+            "name": "preferences[2]",
+            "in": "formData",
+            "format": "string",
+            "description": "preferences"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/user/signin": {
+      "post": {
+        "tags": ["User Api"],
+        "summary": "",
+        "description": "API is about Signin User",
+        "operationId": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "email",
+            "format": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "password",
+            "format": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/user/activate": {
+      "post": {
+        "tags": ["User Api"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "email",
+            "format": "string"
+          },
+          {
+            "name": "activation_hash",
+            "in": "formData",
+            "description": "activation_hash",
+            "format": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/user/resend-activate": {
+      "post": {
+        "tags": ["User Api"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "email",
+            "format": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/user/info": {
+      "get": {
+        "tags": ["User Api"],
+        "summary": "",
+        "description": "Gets user Info",
+        "operationId": "",
+        "produces": ["application/json"],
+        "parameters": [],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/user/resetlinksend": {
+      "post": {
+        "tags": ["User Api"],
+        "summary": "",
+        "description": "Password reset sending link",
+        "operationId": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "email",
+            "format": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/user/add-preferences": {
+      "put": {
+        "tags": ["User Api"],
+        "summary": "",
+        "description": "add user preferences",
+        "operationId": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "preferences[0]",
+            "in": "formData",
+            "format": "string",
+            "description": "preferences"
+          },
+          {
+            "name": "preferences[1]",
+            "in": "formData",
+            "format": "string",
+            "description": "preferences"
+          },
+          {
+            "name": "preferences[2]",
+            "in": "formData",
+            "format": "string",
+            "description": "preferences"
+          }
+        ],
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/user/resetpassword": {
+      "post": {
+        "tags": ["User Api"],
+        "summary": "",
+        "description": "Password reset functionality",
+        "operationId": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "email",
+            "format": "string"
+          },
+          {
+            "name": "reset_hash",
+            "in": "formData",
+            "description": "reset_hash",
+            "format": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "password",
+            "format": "string"
+          }
+        ],
+        "responses": {}
+      }
+    }
+  },
+  "definitions": {
+    "BadRequest": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "status": "400",
+        "message": "Error: Bad Request"
+      }
+    },
+    "ServerError": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "status": "500",
+        "message": "Error: Server failed"
+      }
+    }
+  }
+}
